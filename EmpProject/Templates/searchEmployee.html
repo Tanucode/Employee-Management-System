@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searching Emplyee in Db</title>
+</head>
+<body>
+    {% for meassage in message% }
+    <h1>{{ message }}</h1>
+    {%endfor%}
+
+    <form action="" method="POST">
+        {%csrf_token}
+    <label for="select">Search By</label>
+    <select name="select">
+        <option value="check"></option>
+        <option value="username">Fullname</option>
+        <option value="empid">Employee ID</option>
+        <option value="aow">area of Work</option>
+    </select>
+    <input type="text" name=""Sarch><button type=""submit>Search</button>
+    </form>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Emp ID</th>
+            <th scope="col">FullNmae</th>
+            <th scope="col">Area of work</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Phone no.</th>
+            <th scope="col">Salary</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            {% for i,emp in employee %}
+          <tr>
+            <th scope="row">{{i}}</th>
+            <td>{{emp.username}}</td>
+            <td>{{emp.empid}}</td>
+            <td>{{emp.aow}}</td>
+            <td>{{emp.email}}</td>
+            <td>{{emp.phone}}</td>
+            <td>{{emp.salary}}</td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+</body>
+</html>
